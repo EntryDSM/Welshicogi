@@ -14,6 +14,7 @@ export enum COLORS {
   SERVE_COLOR_5 = "#e3e3e3",
   HR_COLOR = "#dbdbdb",
   DEFAULT_SHADOW = "0 4px 6px 0 rgba(0, 0, 0, 0.12)",
+  DEFAULT_RADIUS = "16px",
 }
 
 const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
