@@ -1,7 +1,7 @@
 import React, { FC, useState, useCallback } from "react";
 
 import type { User } from "data/middleware/api/apiTypes";
-import InfinityScroll from "../infinityScroll";
+import InfinityScroll from "components/infinityScroll";
 import { convertTimeStempToSentence } from "utils/convert";
 import * as S from "./style/index";
 
@@ -12,7 +12,7 @@ const ChattingText: FC = () => {
       {
         qna_id: 1,
         admin_email: "admin@example.com",
-        user_email: "user@example.com",
+        user_email: "junukim.dev@gmail.com",
         to: "admin",
         content: "안녕하세요",
         created_at: "2020-06-03T05:12:40.000Z",
@@ -62,9 +62,13 @@ const ChattingText: FC = () => {
 
   return (
     <S.Wrapper>
-      <InfinityScroll loadMore={fetchMoreData} hasMore={hasMore}>
+      <InfinityScroll
+        loadMore={fetchMoreData}
+        hasMore={hasMore}
+        isReverse={true}
+      >
         {data === null || data.length === 0 ? (
-          <S.EmptyData>EntryDSM에 궁금한점이 있으신가요?</S.EmptyData>
+          <S.EmptyData>대화 내용이 존재하지 않습니다.</S.EmptyData>
         ) : (
           data.map((v) => (
             <S.ChatBubble key={v.qna_id} isAdmin={v.to === "admin"}>

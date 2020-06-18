@@ -1,4 +1,4 @@
-import React, { FC, useState, useCallback } from "react";
+import React, { FC } from "react";
 
 import * as S from "./style/index";
 

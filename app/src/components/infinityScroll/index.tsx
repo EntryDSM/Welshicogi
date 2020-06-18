@@ -7,6 +7,7 @@ import * as S from "./style";
 interface OwnProps {
   loadMore: () => void;
   hasMore: boolean;
+  isReverse?: boolean;
 }
 
 const LoadingBar: FC = () => {
@@ -17,7 +18,12 @@ const LoadingBar: FC = () => {
   );
 };
 
-const InfinityScroll: FC<OwnProps> = ({ loadMore, hasMore, children }) => {
+const InfinityScroll: FC<OwnProps> = ({
+  loadMore,
+  hasMore,
+  isReverse = false,
+  children,
+}) => {
   return (
     <InfiniteScroll
       pageStart={0}
@@ -25,7 +31,7 @@ const InfinityScroll: FC<OwnProps> = ({ loadMore, hasMore, children }) => {
       loader={<LoadingBar />}
       hasMore={hasMore}
       useWindow={false}
-      isReverse={true}
+      isReverse={isReverse}
       threshold={10}
     >
       {children}

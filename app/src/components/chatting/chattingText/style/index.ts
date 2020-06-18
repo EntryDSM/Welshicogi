@@ -97,5 +97,6 @@ export const EmptyData = styled.p`
   width: 100%;
   text-align: center;
   font-size: 14px;
+  margin-top: 10px;
   color: ${COLORS.MAIN_COLOR_1};
 `;

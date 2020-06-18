@@ -11,7 +11,7 @@ const App: FC = () => {
       <GlobalStyle />
       <Header />
       <Switch>
-        <Route path="/" render={() => <Main />} exact />
+        <Route path={["/", "/t/:email"]} render={() => <Main />} exact />
       </Switch>
     </BrowserRouter>
   );
