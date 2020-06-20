@@ -5,7 +5,8 @@ name: Deploy to S3
 
 on:
   push:
-    - master
+    branches:
+      - master
 
 jobs:
   build:
