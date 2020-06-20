@@ -4,9 +4,8 @@
 name: Deploy to S3
 
 on:
-  - push
-#  push:
-#    - master
+  push:
+    - master
 
 jobs:
   build:
