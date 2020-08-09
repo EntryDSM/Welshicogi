@@ -13,7 +13,6 @@ import {
 } from "data/actions/users";
 import { AppState } from "data/store";
 import { InitialState } from "data/reducers/users";
-import { ReadCheck } from "../../../.history/src/data/middleware/api/apiTypes_20200809174046";
 import {
   TokenWithType,
   PagenationRequestType,
@@ -21,6 +20,7 @@ import {
   LoginRequestType,
   RefreshTokenRequestType,
   ChangeListSorted,
+  ReadCheck,
 } from "data/middleware/api/apiTypes";
 
 export const useUsersRedux = () => {
