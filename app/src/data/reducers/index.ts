@@ -1,8 +1,13 @@
 import { combineReducers } from "redux";
 
+import chatting from "./chatting";
+import users from "./users";
 import { API_STATUS } from "middleware/api";
 
-const appReducer = combineReducers({});
+const appReducer = combineReducers({
+  chatting,
+  users,
+});
 
 const rootReducer = (state, action) => {
   let resetState = state;

@@ -28,7 +28,7 @@ const InfinityScroll: FC<OwnProps> = ({
     <InfiniteScroll
       pageStart={0}
       loadMore={loadMore}
-      loader={<LoadingBar />}
+      loader={<LoadingBar key={0} />}
       hasMore={hasMore}
       useWindow={false}
       isReverse={isReverse}

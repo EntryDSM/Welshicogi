@@ -1,5 +1,7 @@
 import { put, call, all } from "redux-saga/effects";
 
+import chattingSaga from "./chattingSaga";
+import usersSaga from "./usersSaga";
 import { AxiosError } from "axios";
 
 interface SagaEntityParams<ActionT, PayloadT> {
@@ -37,5 +39,5 @@ export function* sagaEntity<ActionT, PayloadT = object>({
 }
 
 export default function* rootSaga() {
-  yield all([]);
+  yield all([call(chattingSaga), call(usersSaga)]);
 }

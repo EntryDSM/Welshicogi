@@ -35,3 +35,6 @@ export function convertTimeStempToNowDate(timeStemp: string) {
 
   return newDate;
 }
+
+export const encodingEmail = (email: string) => email.split(".").join("^");
+export const decodingEmail = (email: string) => email.split("^").join(".");

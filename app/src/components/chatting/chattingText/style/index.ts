@@ -13,11 +13,16 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const WarningMeassage = styled.p`
+  font-size: 20px;
+  color: red;
+`;
+
 export const ChatBubble = styled.div<{ isAdmin: boolean }>`
   width: 100%;
   margin-top: 4px;
   display: flex;
-  justify-content: ${({ isAdmin }) => (isAdmin ? "flex-end" : "flex-start")};
+  justify-content: ${({ isAdmin }) => (isAdmin ? "flex-start" : "flex-end")};
 
   > p {
     margin: 0;
@@ -29,12 +34,12 @@ export const ChatBubble = styled.div<{ isAdmin: boolean }>`
     position: relative;
     font-size: 14px;
     border-radius: ${COLORS.DEFAULT_RADIUS};
-    border-bottom-left-radius: ${({ isAdmin }) => !isAdmin && 0};
-    border-bottom-right-radius: ${({ isAdmin }) => isAdmin && 0};
+    border-bottom-left-radius: ${({ isAdmin }) => isAdmin && 0};
+    border-bottom-right-radius: ${({ isAdmin }) => !isAdmin && 0};
     background: ${({ isAdmin }) =>
-      isAdmin ? COLORS.MAIN_COLOR_1 : COLORS.SERVE_COLOR_1};
+      isAdmin ? COLORS.SERVE_COLOR_1 : COLORS.MAIN_COLOR_1};
     color: ${({ isAdmin }) =>
-      isAdmin ? COLORS.MAIN_COLOR_2 : COLORS.SERVE_COLOR_2};
+      isAdmin ? COLORS.SERVE_COLOR_2 : COLORS.MAIN_COLOR_2};
 
     > span {
       display: none;
@@ -46,28 +51,12 @@ export const ChatBubble = styled.div<{ isAdmin: boolean }>`
       border-radius: 2px;
       top: 50%;
       transform: translateY(-50%);
-      left: ${({ isAdmin }) => isAdmin && "-145px"};
-      right: ${({ isAdmin }) => !isAdmin && "-145px"};
+      left: ${({ isAdmin }) => !isAdmin && "-145px"};
+      right: ${({ isAdmin }) => isAdmin && "-145px"};
 
       ${({ isAdmin }) =>
         isAdmin
           ? css`
-              &:after {
-                left: 100%;
-                top: 50%;
-                border: solid transparent;
-                content: " ";
-                height: 0;
-                width: 0;
-                position: absolute;
-                pointer-events: none;
-                border-color: rgba(0, 0, 0, 0);
-                border-left-color: #000;
-                border-width: 6px;
-                margin-top: -6px;
-              }
-            `
-          : css`
               &:after {
                 right: 100%;
                 top: 50%;
@@ -79,6 +68,22 @@ export const ChatBubble = styled.div<{ isAdmin: boolean }>`
                 pointer-events: none;
                 border-color: rgba(0, 0, 0, 0);
                 border-right-color: #000;
+                border-width: 6px;
+                margin-top: -6px;
+              }
+            `
+          : css`
+              &:after {
+                left: 100%;
+                top: 50%;
+                border: solid transparent;
+                content: " ";
+                height: 0;
+                width: 0;
+                position: absolute;
+                pointer-events: none;
+                border-color: rgba(0, 0, 0, 0);
+                border-left-color: #000;
                 border-width: 6px;
                 margin-top: -6px;
               }
