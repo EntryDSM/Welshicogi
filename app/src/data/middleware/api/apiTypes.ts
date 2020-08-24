@@ -8,6 +8,11 @@ export interface User {
   user_receipt_code: number;
 }
 
+export interface Authentication {
+  token: string;
+  type: "admin" | "student";
+}
+
 export interface SendContent {
   content: string;
   userEmail: string;

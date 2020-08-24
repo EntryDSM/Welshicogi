@@ -1,13 +1,21 @@
 import socketio from "socket.io-client";
 
-import type { SendContent, ReadCheck, User, SocketError } from "./apiTypes";
-import { getItemToSesstion } from "utils/stroage";
+import type {
+  SendContent,
+  ReadCheck,
+  User,
+  SocketError,
+  Authentication,
+} from "./apiTypes";
 import { baseURL } from "./currentURL";
 
 const socket = socketio(baseURL, {
   transports: ["websocket"],
-  query: `auth_token=${getItemToSesstion("access_token")}`,
 });
+
+export const authentication = (data: Authentication) => {
+  socket.emit("authentication", data);
+};
 
 export const sendMessage = (data: SendContent) => {
   socket.emit("new message", data);
@@ -25,6 +33,14 @@ export const listenOnReceiveReadCheck = (
   listener: (readCheck: string) => void
 ) => {
   socket.on("receive read check", listener);
+};
+
+export const listenOnAuthenticated = (listener: () => void) => {
+  socket.on("authenticated", listener);
+};
+
+export const listenOnUnauthorized = (listener: () => void) => {
+  socket.on("unauthorized", listener);
 };
 
 export const listenOnError = (listener: (error: SocketError) => void) => {
