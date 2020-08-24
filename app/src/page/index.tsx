@@ -8,12 +8,12 @@ import { Main, Header, NotFoundPage } from "components/index";
 const App: FC = () => {
   return (
     <BrowserRouter>
-      <GlobalStyle />
       <Header />
       <Switch>
         <Route path={["/", "/t/:email"]} render={() => <Main />} exact />
         <Route component={NotFoundPage} />
       </Switch>
+      <GlobalStyle />
     </BrowserRouter>
   );
 };
