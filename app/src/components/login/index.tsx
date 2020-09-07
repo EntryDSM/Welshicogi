@@ -1,12 +1,11 @@
 import React, { FC, useState, useCallback, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 
-import { setItemToSesstion } from "utils/stroage";
 import { useUsersRedux } from "container/users";
 import { Logo } from "assets/index";
 import * as S from "./style";
 
 const Login: FC = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const {
@@ -27,6 +26,12 @@ const Login: FC = () => {
     []
   );
   const doLogin = useCallback(() => {
+    if (!id.trim() || !pw.trim()) {
+      alert("계정 정보를 채워주세요.");
+      return;
+    }
+
+    setIsLoading(true);
     login({ email: id, password: pw });
   }, [id, pw]);
 
@@ -38,6 +43,7 @@ const Login: FC = () => {
       alert("이메일 또는 비밀번호가 불일치 합니다.");
     }
 
+    setIsLoading(false);
     resetStatus();
   }, [loginStatus]);
 
@@ -52,7 +58,7 @@ const Login: FC = () => {
           placeholder="••••••••"
           type="password"
         />
-        <button onClick={doLogin}>로그인</button>
+        <button onClick={doLogin}>{isLoading ? "로딩..." : "로그인"}</button>
       </S.LoginBox>
     </S.Wrapper>
   );

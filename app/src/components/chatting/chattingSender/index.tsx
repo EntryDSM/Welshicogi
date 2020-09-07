@@ -12,7 +12,7 @@ const ChattingSender: FC = () => {
   const [message, setMessage] = useState("");
 
   const send = useCallback(async () => {
-    if (message === "") {
+    if (message.trim() === "") {
       return;
     }
     await sendMessage({ content: message, userEmail: decodingEmail(email) });
