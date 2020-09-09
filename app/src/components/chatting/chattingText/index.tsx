@@ -61,12 +61,12 @@ const ChattingText: FC<OwnProps> = ({ email, receiptCode }) => {
 
   useEffect(() => {
     if (newChat !== null) {
-      if (newChat?.user_receipt_code === receiptCode) {
+      if (Number(newChat.user_receipt_code) === receiptCode) {
         setData((v) => v?.concat(newChat) || [newChat]);
       }
       changeUserList({
         content: newChat.content,
-        receiptCode: newChat.user_receipt_code,
+        receiptCode: Number(newChat.user_receipt_code),
       });
     }
   }, [newChat]);
