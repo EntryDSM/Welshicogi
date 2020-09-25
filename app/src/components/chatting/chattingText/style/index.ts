@@ -27,6 +27,7 @@ export const ChatBubble = styled.div<{ isAdmin: boolean }>`
   > p {
     margin: 0;
     width: fit-content;
+    word-break: break-all;
     max-width: 600px;
     min-height: 36px;
     padding: 10px 12px;
